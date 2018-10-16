@@ -1,4 +1,4 @@
 package com.evtimov.landlordapp.landlordspring.repositories.base;
 
-public interface RepositoryBase<T> {
+public interface RepositoryBase<T>  {
 }
