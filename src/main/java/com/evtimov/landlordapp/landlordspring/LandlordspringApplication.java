@@ -1,5 +1,6 @@
 package com.evtimov.landlordapp.landlordspring;
 
+import com.evtimov.landlordapp.landlordspring.models.User;
 import org.hibernate.SessionFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,6 +17,7 @@ public class LandlordspringApplication {
     public SessionFactory sessionFactory(){
         return new org.hibernate.cfg.Configuration()
                 .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(User.class)
                 .buildSessionFactory();
     }
 }
