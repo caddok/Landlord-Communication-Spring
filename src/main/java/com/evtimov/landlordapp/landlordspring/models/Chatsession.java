@@ -22,12 +22,16 @@ public class Chatsession {
             inverseJoinColumns = @JoinColumn(name = "UserId"))
     private Set<User> users;
 
+    @OneToMany
+    @JoinColumn(name = "ChatsessionId")
+    private Set<Message> messages;
+
+
     public Chatsession(){
         //default
     }
 
-    public Chatsession(int chatsessionID, Date createDate, Set<User> users){
-        setUsers(users);
+    public Chatsession(int chatsessionID, Date createDate){
         setChatsessionID(chatsessionID);
         setCreateDate(createDate);
     }
@@ -54,5 +58,13 @@ public class Chatsession {
 
     public void setUsers(Set<User> users) {
         this.users = users;
+    }
+
+    public Set<Message> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(Set<Message> messages) {
+        this.messages = messages;
     }
 }

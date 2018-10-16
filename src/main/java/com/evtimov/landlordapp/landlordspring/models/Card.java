@@ -24,9 +24,6 @@ public class Card {
     @Column(name = "Cvvnumber")
     private int cvvNumber;
 
-    @Column(name = "UserId")
-    private int userID;
-
     @Column(name = "Balance")
     private double balance;
 
@@ -38,9 +35,7 @@ public class Card {
         //default
     }
 
-    public Card(int cardID, String brand, String type, String cardNumber, int cvvNumber, int userID, double balance, User user){
-        setUser(user);
-        setUserID(userID);
+    public Card(int cardID, String brand, String type, String cardNumber, int cvvNumber, double balance){
         setBrand(brand);
         setType(type);
         setCardNumber(cardNumber);
@@ -87,14 +82,6 @@ public class Card {
 
     public void setCvvNumber(int cvvNumber) {
         this.cvvNumber = cvvNumber;
-    }
-
-    public int getUserID() {
-        return userID;
-    }
-
-    public void setUserID(int userID) {
-        this.userID = userID;
     }
 
     public double getBalance() {

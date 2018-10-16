@@ -3,6 +3,7 @@ package com.evtimov.landlordapp.landlordspring.models;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table(name = "rents")
@@ -19,9 +20,6 @@ public class Rent {
     @Column(name = "Remaining")
     private double remaining;
 
-    @Column(name = "PlaceId")
-    private int placeId;
-
     @Column(name = "IsPaid")
     private boolean isPaid;
 
@@ -32,16 +30,18 @@ public class Rent {
     @JoinColumn(name = "PlaceId")
     private Place place;
 
+    @OneToMany
+    @JoinColumn(name = "RentId")
+    private Set<Payment> payments;
+
     public Rent(){
         //default
     }
 
-    public Rent(int rentID, double totalAmount, double remaining, int placeId, boolean isPaid, Date dueDate, Place place){
-        setPlace(place);
+    public Rent(int rentID, double totalAmount, double remaining, boolean isPaid, Date dueDate){
         setRentID(rentID);
         setTotalAmount(totalAmount);
         setRemaining(remaining);
-        setPlaceId(placeId);
         setIsPaid(isPaid);
         setDueDate(dueDate);
     }
@@ -70,20 +70,12 @@ public class Rent {
         this.remaining = remaining;
     }
 
-    public int getPlaceId() {
-        return placeId;
-    }
-
-    public void setPlaceId(int placeId) {
-        this.placeId = placeId;
-    }
-
     public boolean getIsPaid() {
-        return isPaid;
+        return this.isPaid;
     }
 
     public void setIsPaid(boolean isPaid) {
-        isPaid = isPaid;
+        this.isPaid = isPaid;
     }
 
     public Date getDueDate() {
@@ -100,5 +92,13 @@ public class Rent {
 
     public void setPlace(Place place) {
         this.place = place;
+    }
+
+    public Set<Payment> getPayments() {
+        return payments;
+    }
+
+    public void setPayments(Set<Payment> payments) {
+        this.payments = payments;
     }
 }

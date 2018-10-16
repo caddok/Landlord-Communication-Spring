@@ -13,9 +13,6 @@ public class Report {
     @Column(name = "ReportId")
     private int reportID;
 
-    @Column(name = "PlaceId")
-    private int placeID;
-
     @Column(name = "Issue")
     private String issue;
 
@@ -31,9 +28,6 @@ public class Report {
     @Column(name = "Isresolved")
     private boolean isResolved;
 
-    @Column(name = "UserId")
-    private int userID;
-
     @ManyToOne
     @JoinColumn(name = "PlaceId")
     private Place place;
@@ -46,18 +40,13 @@ public class Report {
         //default
     }
 
-    public Report(int reportID, int placeID, String issue, String description, String picture, Date date, boolean isResolved,
-                  int userID, Place place, User user){
-        setPlace(place);
-        setUser(user);
+    public Report(int reportID, String issue, String description, String picture, Date date, boolean isResolved){
         setReportID(reportID);
-        setPlaceID(placeID);
         setIssue(issue);
         setDescription(description);
         setPicture(picture);
         setDate(date);
         setIsResolved(isResolved);
-        setUserID(userID);
     }
 
     public int getReportID() {
@@ -66,14 +55,6 @@ public class Report {
 
     public void setReportID(int reportID) {
         this.reportID = reportID;
-    }
-
-    public int getPlaceID() {
-        return placeID;
-    }
-
-    public void setPlaceID(int placeID) {
-        this.placeID = placeID;
     }
 
     public String getIssue() {
@@ -109,19 +90,11 @@ public class Report {
     }
 
     public boolean getIsResolved() {
-        return isResolved;
+        return this.isResolved;
     }
 
     public void setIsResolved(boolean isResolved) {
-        isResolved = isResolved;
-    }
-
-    public int getUserID() {
-        return userID;
-    }
-
-    public void setUserID(int userID) {
-        this.userID = userID;
+        this.isResolved = isResolved;
     }
 
     public Place getPlace() {

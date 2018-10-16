@@ -61,15 +61,33 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "ChatsessionID"))
     private Set<Chatsession> myChats;
 
+    @OneToMany
+    @JoinColumn(name = "UserId")
+    private Set<Card> myCards;
+
+    @OneToMany
+    @JoinColumn(name = "UserId")
+    private Set<Report> myReports;
+
+    @OneToMany
+    @JoinColumn(name = "UserId")
+    private Set<Payment> myPayments;
+
+    @OneToMany
+    @JoinColumn(name = "SenderId")
+    private Set<Message> sentMessages;
+
+    @OneToMany
+    @JoinColumn(name = "ReceiverId")
+    private Set<Message> receivedMessages;
+
 
     public User(){
         //default
     }
 
     public User(int userID, boolean isLandlord, String username, String picture, String firstName, String lastName, String email,
-                boolean isOnline, String passwordHash, String passwordSalt, int votes, double voteSum, Set<Place> myPlaces, Set<Chatsession> myChats){
-        setMyChats(myChats);
-        setMyPlaces(myPlaces);
+                boolean isOnline, String passwordHash, String passwordSalt, int votes, double voteSum){
         setUserID(userID);
         setIsLandlord(isLandlord);
         setUsername(username);
@@ -92,12 +110,12 @@ public class User {
         this.userID = userID;
     }
 
-    public boolean isLandlord() {
-        return isLandlord;
+    public boolean getIsLandlord() {
+        return this.isLandlord;
     }
 
     public void setIsLandlord(boolean isLandlord) {
-        isLandlord = isLandlord;
+        this.isLandlord = isLandlord;
     }
 
     public String getUsername() {
@@ -141,11 +159,11 @@ public class User {
     }
 
     public boolean getIsOnline() {
-        return isOnline;
+        return this.isOnline;
     }
 
     public void setIsOnline(boolean isOnline) {
-        isOnline = isOnline;
+        this.isOnline = isOnline;
     }
 
     public double getRating() {
@@ -202,5 +220,45 @@ public class User {
 
     public void setMyChats(Set<Chatsession> myChats) {
         this.myChats = myChats;
+    }
+
+    public Set<Card> getMyCards() {
+        return myCards;
+    }
+
+    public void setMyCards(Set<Card> myCards) {
+        this.myCards = myCards;
+    }
+
+    public Set<Report> getMyReports() {
+        return myReports;
+    }
+
+    public void setMyReports(Set<Report> myReports) {
+        this.myReports = myReports;
+    }
+
+    public Set<Payment> getMyPayments() {
+        return myPayments;
+    }
+
+    public void setMyPayments(Set<Payment> myPayments) {
+        this.myPayments = myPayments;
+    }
+
+    public Set<Message> getSentMessages() {
+        return sentMessages;
+    }
+
+    public void setSentMessages(Set<Message> sentMessages) {
+        this.sentMessages = sentMessages;
+    }
+
+    public Set<Message> getReceivedMessages() {
+        return receivedMessages;
+    }
+
+    public void setReceivedMessages(Set<Message> receivedMessages) {
+        this.receivedMessages = receivedMessages;
     }
 }

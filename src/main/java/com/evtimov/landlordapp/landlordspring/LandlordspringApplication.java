@@ -1,6 +1,6 @@
 package com.evtimov.landlordapp.landlordspring;
 
-import com.evtimov.landlordapp.landlordspring.models.User;
+import com.evtimov.landlordapp.landlordspring.models.*;
 import org.hibernate.SessionFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -18,6 +18,13 @@ public class LandlordspringApplication {
         return new org.hibernate.cfg.Configuration()
                 .configure("hibernate.cfg.xml")
                 .addAnnotatedClass(User.class)
+                .addAnnotatedClass(Place.class)
+                .addAnnotatedClass(Card.class)
+                .addAnnotatedClass(Report.class)
+                .addAnnotatedClass(Payment.class)
+                .addAnnotatedClass(Rent.class)
+                .addAnnotatedClass(Chatsession.class)
+                .addAnnotatedClass(Message.class)
                 .buildSessionFactory();
     }
 }

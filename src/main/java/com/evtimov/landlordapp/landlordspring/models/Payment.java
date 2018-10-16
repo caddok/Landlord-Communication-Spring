@@ -13,17 +13,23 @@ public class Payment {
     @Column(name = "PaymentId")
     private int paymentID;
 
-    @Column(name = "UserId")
-    private int userID;
+    @ManyToOne
+    @JoinColumn(name = "UserId")
+    private User user;
 
-    @Column(name = "CardId")
-    private int cardID;
 
-    @Column(name = "PlaceId")
-    private int placeID;
+    @ManyToOne
+    @JoinColumn(name = "CardId")
+    private Card card;
 
-    @Column(name = "RentId")
-    private int rentID;
+
+    @ManyToOne
+    @JoinColumn(name = "PlaceId")
+    private Place place;
+
+    @ManyToOne
+    @JoinColumn(name = "RentId")
+    private Rent rent;
 
     @Column(name = "Amount")
     private double amount;
@@ -35,12 +41,8 @@ public class Payment {
         //default
     }
 
-    public Payment(int paymentID, int userID, int cardID, int placeID, int rentID, double amount, Date date){
+    public Payment(int paymentID, double amount, Date date){
         setPaymentID(paymentID);
-        setUserID(userID);
-        setCardID(cardID);
-        setPlaceID(placeID);
-        setRentID(rentID);
         setAmount(amount);
         setDate(date);
     }
@@ -51,38 +53,6 @@ public class Payment {
 
     public void setPaymentID(int paymentID) {
         this.paymentID = paymentID;
-    }
-
-    public int getUserID() {
-        return userID;
-    }
-
-    public void setUserID(int userID) {
-        this.userID = userID;
-    }
-
-    public int getCardID() {
-        return cardID;
-    }
-
-    public void setCardID(int cardID) {
-        this.cardID = cardID;
-    }
-
-    public int getPlaceID() {
-        return placeID;
-    }
-
-    public void setPlaceID(int placeID) {
-        this.placeID = placeID;
-    }
-
-    public int getRentID() {
-        return rentID;
-    }
-
-    public void setRentID(int rentID) {
-        this.rentID = rentID;
     }
 
     public double getAmount() {
@@ -99,5 +69,37 @@ public class Payment {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Rent getRent() {
+        return rent;
+    }
+
+    public void setRent(Rent rent) {
+        this.rent = rent;
+    }
+
+    public Card getCard() {
+        return card;
+    }
+
+    public void setCard(Card card) {
+        this.card = card;
+    }
+
+    public Place getPlace() {
+        return place;
+    }
+
+    public void setPlace(Place place) {
+        this.place = place;
     }
 }

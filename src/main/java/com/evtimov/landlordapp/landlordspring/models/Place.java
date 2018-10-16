@@ -24,12 +24,15 @@ public class Place {
             inverseJoinColumns = @JoinColumn(name = "UserID"))
     private Set<User> users;
 
+    @OneToMany
+    @JoinColumn(name = "PlaceId")
+    private Set<Report> reports;
+
     public Place(){
         //default
     }
 
-    public Place(int placeID, String address, String description, Set<User> users){
-        setUsers(users);
+    public Place(int placeID, String address, String description){
         setPlaceID(placeID);
         setAddress(address);
         setDescription(description);
@@ -66,5 +69,13 @@ public class Place {
 
     public void setUsers(Set<User> users) {
         this.users = users;
+    }
+
+    public Set<Report> getReports() {
+        return reports;
+    }
+
+    public void setReports(Set<Report> reports) {
+        this.reports = reports;
     }
 }
