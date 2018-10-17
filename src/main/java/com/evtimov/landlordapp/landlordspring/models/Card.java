@@ -9,26 +9,26 @@ public class Card {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "CardId")
+    @Column(name = "cardId")
     private int cardID;
 
-    @Column(name = "Brand")
+    @Column(name = "brand")
     private String brand;
 
-    @Column(name = "Type")
+    @Column(name = "type")
     private String type;
 
-    @Column(name = "Cardnumber")
+    @Column(name = "cardnumber")
     private String cardNumber;
 
-    @Column(name = "Cvvnumber")
+    @Column(name = "cvvnumber")
     private int cvvNumber;
 
-    @Column(name = "Balance")
+    @Column(name = "balance")
     private double balance;
 
     @ManyToOne
-    @JoinColumn(name = "UserId")
+    @JoinColumn(name = "userId")
     private User user;
 
     public Card(){

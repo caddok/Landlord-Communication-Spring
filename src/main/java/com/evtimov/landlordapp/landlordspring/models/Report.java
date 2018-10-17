@@ -10,30 +10,30 @@ public class Report {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ReportId")
+    @Column(name = "reportId")
     private int reportID;
 
-    @Column(name = "Issue")
+    @Column(name = "issue")
     private String issue;
 
-    @Column(name = "Description")
+    @Column(name = "description")
     private String description;
 
-    @Column(name = "Picture")
+    @Column(name = "picture")
     private String picture;
 
-    @Column(name = "Date")
+    @Column(name = "date")
     private Date date;
 
-    @Column(name = "Isresolved")
+    @Column(name = "isresolved")
     private boolean isResolved;
 
     @ManyToOne
-    @JoinColumn(name = "PlaceId")
+    @JoinColumn(name = "placeId")
     private Place place;
 
     @ManyToOne
-    @JoinColumn(name = "UserId")
+    @JoinColumn(name = "userId")
     private User user;
 
     public Report(){

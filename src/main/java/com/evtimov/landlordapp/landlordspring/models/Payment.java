@@ -10,31 +10,31 @@ public class Payment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "PaymentId")
+    @Column(name = "paymentId")
     private int paymentID;
 
     @ManyToOne
-    @JoinColumn(name = "UserId")
+    @JoinColumn(name = "userId")
     private User user;
 
 
     @ManyToOne
-    @JoinColumn(name = "CardId")
+    @JoinColumn(name = "cardId")
     private Card card;
 
 
     @ManyToOne
-    @JoinColumn(name = "PlaceId")
+    @JoinColumn(name = "placeId")
     private Place place;
 
     @ManyToOne
-    @JoinColumn(name = "RentId")
+    @JoinColumn(name = "rentId")
     private Rent rent;
 
-    @Column(name = "Amount")
+    @Column(name = "amount")
     private double amount;
 
-    @Column(name = "Date")
+    @Column(name = "date")
     private Date date;
 
     public Payment(){

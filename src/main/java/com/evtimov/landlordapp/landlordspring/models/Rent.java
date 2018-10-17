@@ -11,27 +11,27 @@ public class Rent {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "RentId")
+    @Column(name = "rentId")
     private int rentID;
 
-    @Column(name = "Totalamount")
+    @Column(name = "totalamount")
     private double totalAmount;
 
-    @Column(name = "Remaining")
+    @Column(name = "remaining")
     private double remaining;
 
-    @Column(name = "IsPaid")
+    @Column(name = "ispaid")
     private boolean isPaid;
 
-    @Column(name = "Duedate")
+    @Column(name = "duedate")
     private Date dueDate;
 
     @ManyToOne
-    @JoinColumn(name = "PlaceId")
+    @JoinColumn(name = "placeId")
     private Place place;
 
     @OneToMany
-    @JoinColumn(name = "RentId")
+    @JoinColumn(name = "rentId")
     private Set<Payment> payments;
 
     public Rent(){

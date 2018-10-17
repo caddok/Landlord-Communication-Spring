@@ -9,23 +9,23 @@ public class Place {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "PlaceId")
+    @Column(name = "placeId")
     private int placeID;
 
-    @Column(name = "Address")
+    @Column(name = "address")
     private String address;
 
-    @Column(name = "Description")
+    @Column(name = "description")
     private String description;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "usersplaces",
-            joinColumns = @JoinColumn(name = "PlaceID"),
-            inverseJoinColumns = @JoinColumn(name = "UserID"))
+            joinColumns = @JoinColumn(name = "placeId"),
+            inverseJoinColumns = @JoinColumn(name = "userId"))
     private Set<User> users;
 
     @OneToMany
-    @JoinColumn(name = "PlaceId")
+    @JoinColumn(name = "placeId")
     private Set<Report> reports;
 
     public Place(){

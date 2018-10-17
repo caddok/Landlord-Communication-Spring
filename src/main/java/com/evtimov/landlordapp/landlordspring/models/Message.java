@@ -10,31 +10,31 @@ public class Message {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "MessageId")
+    @Column(name = "messageId")
     private int messageID;
 
-    @Column(name = "Timestamp")
+    @Column(name = "timestamp")
     private Date timestamp;
 
     @ManyToOne
-    @JoinColumn(name = "ChatsessionId")
+    @JoinColumn(name = "chatsessionId")
     private Chatsession chatsession;
 
-    @Column(name = "Text")
+    @Column(name = "text")
     private String text;
 
-    @Column(name = "Picture")
+    @Column(name = "picture")
     private String picture;
 
-    @Column(name = "Status")
+    @Column(name = "status")
     private String status;
 
     @ManyToOne
-    @JoinColumn(name = "SenderId")
+    @JoinColumn(name = "senderId")
     private User sender;
 
     @ManyToOne
-    @JoinColumn(name = "ReceiverId")
+    @JoinColumn(name = "receiverId")
     private User receiver;
 
 
