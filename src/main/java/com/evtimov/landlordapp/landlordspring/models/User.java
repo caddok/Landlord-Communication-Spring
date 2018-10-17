@@ -10,56 +10,76 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "UserId")
+    @Column(name = "userId")
     private int userID;
 
-    @Column(name = "IsLandlord")
+    @Column(name = "islandlord")
     private boolean isLandlord;
 
-    @Column(name = "Username")
+    @Column(name = "username")
     private String username;
 
-    @Column(name = "Picture")
+    @Column(name = "picture")
     private String picture;
 
-    @Column(name = "Firstname")
+    @Column(name = "firstname")
     private String firstName;
 
-    @Column(name = "Lastname")
+    @Column(name = "lastname")
     private String lastName;
 
-    @Column(name = "Email")
+    @Column(name = "email")
     private String email;
 
-    @Column(name = "Isonline")
+    @Column(name = "isonline")
     private boolean isOnline;
 
-    @Column(name = "Rating")
+    @Column(name = "rating")
     private double rating;
 
-    @Column(name = "Passwordhash")
+    @Column(name = "passwordhash")
     private String passwordHash;
 
-    @Column(name = "Passwordsalt")
+    @Column(name = "passwordsalt")
     private String passwordSalt;
 
-    @Column(name = "Votes")
+    @Column(name = "votes")
     private int votes;
 
-    @Column(name = "Votesum")
+    @Column(name = "votesum")
     private double voteSum;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "usersplaces",
-            joinColumns = @JoinColumn(name = "UserID"),
-            inverseJoinColumns = @JoinColumn(name = "PlaceID"))
+            joinColumns = @JoinColumn(name = "userId"),
+            inverseJoinColumns = @JoinColumn(name = "placeId"))
     private Set<Place> myPlaces;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "mchatsessionsusers",
-            joinColumns = @JoinColumn(name = "UserID"),
-            inverseJoinColumns = @JoinColumn(name = "ChatsessionID"))
+    @JoinTable(name = "chatsessionsusers",
+            joinColumns = @JoinColumn(name = "userId"),
+            inverseJoinColumns = @JoinColumn(name = "chatsessionId"))
     private Set<Chatsession> myChats;
+
+    @OneToMany
+    @JoinColumn(name = "userId")
+    private Set<Card> myCards;
+
+    @OneToMany
+    @JoinColumn(name = "userId")
+    private Set<Report> myReports;
+
+    @OneToMany
+    @JoinColumn(name = "userId")
+    private Set<Payment> myPayments;
+
+    @OneToMany
+    @JoinColumn(name = "senderId")
+    private Set<Message> sentMessages;
+
+    @OneToMany
+    @JoinColumn(name = "receiverId")
+    private Set<Message> receivedMessages;
 
 
     public User(){
@@ -67,9 +87,7 @@ public class User {
     }
 
     public User(int userID, boolean isLandlord, String username, String picture, String firstName, String lastName, String email,
-                boolean isOnline, String passwordHash, String passwordSalt, int votes, double voteSum, Set<Place> myPlaces, Set<Chatsession> myChats){
-        setMyChats(myChats);
-        setMyPlaces(myPlaces);
+                boolean isOnline, String passwordHash, String passwordSalt, int votes, double voteSum){
         setUserID(userID);
         setIsLandlord(isLandlord);
         setUsername(username);
@@ -92,12 +110,12 @@ public class User {
         this.userID = userID;
     }
 
-    public boolean isLandlord() {
-        return isLandlord;
+    public boolean getIsLandlord() {
+        return this.isLandlord;
     }
 
     public void setIsLandlord(boolean isLandlord) {
-        isLandlord = isLandlord;
+        this.isLandlord = isLandlord;
     }
 
     public String getUsername() {
@@ -141,11 +159,11 @@ public class User {
     }
 
     public boolean getIsOnline() {
-        return isOnline;
+        return this.isOnline;
     }
 
     public void setIsOnline(boolean isOnline) {
-        isOnline = isOnline;
+        this.isOnline = isOnline;
     }
 
     public double getRating() {
@@ -202,5 +220,45 @@ public class User {
 
     public void setMyChats(Set<Chatsession> myChats) {
         this.myChats = myChats;
+    }
+
+    public Set<Card> getMyCards() {
+        return myCards;
+    }
+
+    public void setMyCards(Set<Card> myCards) {
+        this.myCards = myCards;
+    }
+
+    public Set<Report> getMyReports() {
+        return myReports;
+    }
+
+    public void setMyReports(Set<Report> myReports) {
+        this.myReports = myReports;
+    }
+
+    public Set<Payment> getMyPayments() {
+        return myPayments;
+    }
+
+    public void setMyPayments(Set<Payment> myPayments) {
+        this.myPayments = myPayments;
+    }
+
+    public Set<Message> getSentMessages() {
+        return sentMessages;
+    }
+
+    public void setSentMessages(Set<Message> sentMessages) {
+        this.sentMessages = sentMessages;
+    }
+
+    public Set<Message> getReceivedMessages() {
+        return receivedMessages;
+    }
+
+    public void setReceivedMessages(Set<Message> receivedMessages) {
+        this.receivedMessages = receivedMessages;
     }
 }

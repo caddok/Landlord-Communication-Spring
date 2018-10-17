@@ -3,6 +3,7 @@ package com.evtimov.landlordapp.landlordspring.models;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table(name = "rents")
@@ -10,38 +11,41 @@ public class Rent {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "RentId")
+    @Column(name = "rentId")
     private int rentID;
 
-    @Column(name = "Totalamount")
+    @Column(name = "totalamount")
     private double totalAmount;
 
-    @Column(name = "Remaining")
+    @Column(name = "placeId")
+    private int placeID;
+
+    @Column(name = "remaining")
     private double remaining;
 
-    @Column(name = "PlaceId")
-    private int placeId;
-
-    @Column(name = "IsPaid")
+    @Column(name = "ispaid")
     private boolean isPaid;
 
-    @Column(name = "Duedate")
+    @Column(name = "duedate")
     private Date dueDate;
 
     @ManyToOne
-    @JoinColumn(name = "PlaceId")
+    @JoinColumn(name = "placeId")
     private Place place;
+
+    @OneToMany
+    @JoinColumn(name = "rentId")
+    private Set<Payment> payments;
 
     public Rent(){
         //default
     }
 
-    public Rent(int rentID, double totalAmount, double remaining, int placeId, boolean isPaid, Date dueDate, Place place){
-        setPlace(place);
+    public Rent(int rentID, double totalAmount, double remaining, boolean isPaid, Date dueDate, int placeID){
+        setPlaceID(placeID);
         setRentID(rentID);
         setTotalAmount(totalAmount);
         setRemaining(remaining);
-        setPlaceId(placeId);
         setIsPaid(isPaid);
         setDueDate(dueDate);
     }
@@ -70,20 +74,12 @@ public class Rent {
         this.remaining = remaining;
     }
 
-    public int getPlaceId() {
-        return placeId;
-    }
-
-    public void setPlaceId(int placeId) {
-        this.placeId = placeId;
-    }
-
     public boolean getIsPaid() {
-        return isPaid;
+        return this.isPaid;
     }
 
     public void setIsPaid(boolean isPaid) {
-        isPaid = isPaid;
+        this.isPaid = isPaid;
     }
 
     public Date getDueDate() {
@@ -100,5 +96,21 @@ public class Rent {
 
     public void setPlace(Place place) {
         this.place = place;
+    }
+
+    public Set<Payment> getPayments() {
+        return payments;
+    }
+
+    public void setPayments(Set<Payment> payments) {
+        this.payments = payments;
+    }
+
+    public int getPlaceID() {
+        return placeID;
+    }
+
+    public void setPlaceID(int placeID) {
+        this.placeID = placeID;
     }
 }

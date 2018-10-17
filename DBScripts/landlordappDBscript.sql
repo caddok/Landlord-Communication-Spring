@@ -57,7 +57,7 @@ CREATE TABLE `landlordcommunicationdb`.`reports` (
   `placeId` INT NOT NULL,
   `issue` VARCHAR(35) NOT NULL,
   `picture` BLOB NULL,
-  `date` DATETIME NOT NULL,
+  `date` DATE NOT NULL,
   `description` TINYTEXT NOT NULL,
   `isresolved` TINYINT NOT NULL DEFAULT 0,
   `userId` INT NOT NULL,
@@ -74,7 +74,7 @@ CREATE TABLE `landlordcommunicationdb`.`payments` (
   `placeId` INT NOT NULL,
   `rentId` INT NOT NULL,
   `amount` DECIMAL(7,2) NOT NULL,
-  `date` DATETIME NOT NULL,
+  `date` DATE NOT NULL,
   PRIMARY KEY (`paymentId`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
@@ -87,7 +87,7 @@ CREATE TABLE `landlordcommunicationdb`.`rents` (
   `remaining` DECIMAL(7,2) NOT NULL,
   `placeId` INT NOT NULL,
   `ispaid` TINYINT NOT NULL DEFAULT 0,
-  `duedate` DATETIME NOT NULL,
+  `duedate` DATE NOT NULL,
   PRIMARY KEY (`rentId`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
@@ -96,7 +96,7 @@ COLLATE = utf8_unicode_ci;
 
 CREATE TABLE `landlordcommunicationdb`.`chatsessions` (
   `chatsessionId` INT NOT NULL AUTO_INCREMENT,
-  `createdate` DATETIME NOT NULL,
+  `createdate` DATE NOT NULL,
   PRIMARY KEY (`chatsessionId`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
@@ -107,7 +107,7 @@ CREATE TABLE `landlordcommunicationdb`.`messages` (
   `messageId` INT NOT NULL AUTO_INCREMENT,
   `senderId` INT NOT NULL,
   `recieverId` INT NOT NULL,
-  `timestamp` DATETIME NOT NULL,
+  `timestamp` DATE NOT NULL,
   `text` MEDIUMTEXT NOT NULL,
   `chatsessionId` INT NOT NULL,
   `picture` BLOB NULL,

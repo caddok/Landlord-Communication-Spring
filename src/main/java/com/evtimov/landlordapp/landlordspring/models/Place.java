@@ -9,27 +9,34 @@ public class Place {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "PlaceId")
+    @Column(name = "placeId")
     private int placeID;
 
-    @Column(name = "Address")
+    @Column(name = "address")
     private String address;
 
-    @Column(name = "Description")
+    @Column(name = "description")
     private String description;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "usersplaces",
-            joinColumns = @JoinColumn(name = "PlaceID"),
-            inverseJoinColumns = @JoinColumn(name = "UserID"))
+            joinColumns = @JoinColumn(name = "placeId"),
+            inverseJoinColumns = @JoinColumn(name = "userId"))
     private Set<User> users;
+
+    @OneToMany
+    @JoinColumn(name = "placeId")
+    private Set<Report> reports;
+
+    @OneToMany
+    @JoinColumn(name = "placeId")
+    private Set<Rent> rents;
 
     public Place(){
         //default
     }
 
-    public Place(int placeID, String address, String description, Set<User> users){
-        setUsers(users);
+    public Place(int placeID, String address, String description){
         setPlaceID(placeID);
         setAddress(address);
         setDescription(description);
@@ -66,5 +73,21 @@ public class Place {
 
     public void setUsers(Set<User> users) {
         this.users = users;
+    }
+
+    public Set<Report> getReports() {
+        return reports;
+    }
+
+    public void setReports(Set<Report> reports) {
+        this.reports = reports;
+    }
+
+    public Set<Rent> getRents() {
+        return rents;
+    }
+
+    public void setRents(Set<Rent> rents) {
+        this.rents = rents;
     }
 }

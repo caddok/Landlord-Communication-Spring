@@ -10,50 +10,50 @@ public class Message {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "MessageId")
+    @Column(name = "messageId")
     private int messageID;
 
-    @Column(name = "SenderId")
-    private int senderID;
-
-    @Column(name = "RecieverId")
-    private int recieverID;
-
-    @Column(name = "Timestamp")
+    @Column(name = "timestamp")
     private Date timestamp;
 
-    @Column(name = "ChatsessionId")
-    private int chatsessionID;
+    @Column(name = "senderId")
+    private int senderID;
 
-    @Column(name = "Text")
+    @Column(name = "receiverId")
+    private int receiverID;
+
+    @ManyToOne
+    @JoinColumn(name = "chatsessionId")
+    private Chatsession chatsession;
+
+    @Column(name = "text")
     private String text;
 
-    @Column(name = "Picture")
+    @Column(name = "picture")
     private String picture;
 
-    @Column(name = "Status")
+    @Column(name = "status")
     private String status;
 
-//    @ManyToOne
-//    @JoinColumn(name = "SenderId")
-//    private User sender;
-//
-//    @ManyToOne
-//    @JoinColumn(name = "RecieverId")
-//    private User reciever;
+    @ManyToOne
+    @JoinColumn(name = "senderId")
+    private User sender;
+
+    @ManyToOne
+    @JoinColumn(name = "receiverId")
+    private User receiver;
 
 
     public Message(){
         //default
     }
 
-    public Message(int messageID, int senderID, int recieverID, Date timestamp, int chatsessionID, String text,
-                   String picture, String status){
-        setMessageID(messageID);
+    public Message(int messageID, Date timestamp, String text,
+                   String picture, String status, int senderID, int receiverID){
+        setReceiverID(receiverID);
         setSenderID(senderID);
-        setRecieverID(recieverID);
+        setMessageID(messageID);
         setTimestamp(timestamp);
-        setChatsessionID(chatsessionID);
         setText(text);
         setPicture(picture);
         setStatus(status);
@@ -67,21 +67,7 @@ public class Message {
         this.messageID = messageID;
     }
 
-    public int getSenderID() {
-        return senderID;
-    }
 
-    public void setSenderID(int senderID) {
-        this.senderID = senderID;
-    }
-
-    public int getRecieverID() {
-        return recieverID;
-    }
-
-    public void setRecieverID(int recieverID) {
-        this.recieverID = recieverID;
-    }
 
     public Date getTimestamp() {
         return timestamp;
@@ -89,14 +75,6 @@ public class Message {
 
     public void setTimestamp(Date timestamp) {
         this.timestamp = timestamp;
-    }
-
-    public int getChatsessionID() {
-        return chatsessionID;
-    }
-
-    public void setChatsessionID(int chatsessionID) {
-        this.chatsessionID = chatsessionID;
     }
 
     public String getText() {
@@ -121,5 +99,45 @@ public class Message {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public Chatsession getChatsession() {
+        return chatsession;
+    }
+
+    public void setChatsession(Chatsession chatsession) {
+        this.chatsession = chatsession;
+    }
+
+    public User getSender() {
+        return sender;
+    }
+
+    public void setSender(User sender) {
+        this.sender = sender;
+    }
+
+    public User getReceiver() {
+        return receiver;
+    }
+
+    public void setReceiver(User receiver) {
+        this.receiver = receiver;
+    }
+
+    public int getSenderID() {
+        return senderID;
+    }
+
+    public void setSenderID(int senderID) {
+        this.senderID = senderID;
+    }
+
+    public int getReceiverID() {
+        return receiverID;
+    }
+
+    public void setReceiverID(int receiverID) {
+        this.receiverID = receiverID;
     }
 }
