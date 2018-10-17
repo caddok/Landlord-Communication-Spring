@@ -22,8 +22,7 @@ public class Chatsession {
             inverseJoinColumns = @JoinColumn(name = "userId"))
     private Set<User> users;
 
-    @OneToMany
-    @JoinColumn(name = "chatsessionId")
+    @OneToMany(mappedBy = "chatsessionId")
     private Set<Message> messages;
 
 
