@@ -17,6 +17,9 @@ public class Rent {
     @Column(name = "totalamount")
     private double totalAmount;
 
+    @Column(name = "placeId")
+    private int placeID;
+
     @Column(name = "remaining")
     private double remaining;
 
@@ -38,7 +41,8 @@ public class Rent {
         //default
     }
 
-    public Rent(int rentID, double totalAmount, double remaining, boolean isPaid, Date dueDate){
+    public Rent(int rentID, double totalAmount, double remaining, boolean isPaid, Date dueDate, int placeID){
+        setPlaceID(placeID);
         setRentID(rentID);
         setTotalAmount(totalAmount);
         setRemaining(remaining);
@@ -100,5 +104,13 @@ public class Rent {
 
     public void setPayments(Set<Payment> payments) {
         this.payments = payments;
+    }
+
+    public int getPlaceID() {
+        return placeID;
+    }
+
+    public void setPlaceID(int placeID) {
+        this.placeID = placeID;
     }
 }

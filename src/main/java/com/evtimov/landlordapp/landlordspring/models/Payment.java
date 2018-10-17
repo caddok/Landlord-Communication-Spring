@@ -13,6 +13,18 @@ public class Payment {
     @Column(name = "paymentId")
     private int paymentID;
 
+    @Column(name = "userId")
+    private int userID;
+
+    @Column(name = "cardId")
+    private int cardID;
+
+    @Column(name = "placeId")
+    private int placeID;
+
+    @Column(name = "rentId")
+    private int rentID;
+
     @ManyToOne
     @JoinColumn(name = "userId")
     private User user;
@@ -21,7 +33,6 @@ public class Payment {
     @ManyToOne
     @JoinColumn(name = "cardId")
     private Card card;
-
 
     @ManyToOne
     @JoinColumn(name = "placeId")
@@ -41,7 +52,11 @@ public class Payment {
         //default
     }
 
-    public Payment(int paymentID, double amount, Date date){
+    public Payment(int paymentID, double amount, Date date, int userID, int cardID, int placeID, int rentID){
+        setRentID(rentID);
+        setPlaceID(placeID);
+        setUserID(userID);
+        setCardID(cardID);
         setPaymentID(paymentID);
         setAmount(amount);
         setDate(date);
@@ -101,5 +116,37 @@ public class Payment {
 
     public void setPlace(Place place) {
         this.place = place;
+    }
+
+    public int getUserID() {
+        return userID;
+    }
+
+    public void setUserID(int userID) {
+        this.userID = userID;
+    }
+
+    public int getCardID() {
+        return cardID;
+    }
+
+    public void setCardID(int cardID) {
+        this.cardID = cardID;
+    }
+
+    public int getPlaceID() {
+        return placeID;
+    }
+
+    public void setPlaceID(int placeID) {
+        this.placeID = placeID;
+    }
+
+    public int getRentID() {
+        return rentID;
+    }
+
+    public void setRentID(int rentID) {
+        this.rentID = rentID;
     }
 }

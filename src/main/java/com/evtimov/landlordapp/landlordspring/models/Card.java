@@ -27,6 +27,9 @@ public class Card {
     @Column(name = "balance")
     private double balance;
 
+    @Column(name = "userId")
+    private int userID;
+
     @ManyToOne
     @JoinColumn(name = "userId")
     private User user;
@@ -35,7 +38,8 @@ public class Card {
         //default
     }
 
-    public Card(int cardID, String brand, String type, String cardNumber, int cvvNumber, double balance){
+    public Card(int cardID, String brand, String type, String cardNumber, int cvvNumber, double balance, int userID){
+        setUserID(userID);
         setBrand(brand);
         setType(type);
         setCardNumber(cardNumber);
@@ -98,5 +102,13 @@ public class Card {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public int getUserID() {
+        return userID;
+    }
+
+    public void setUserID(int userID) {
+        this.userID = userID;
     }
 }

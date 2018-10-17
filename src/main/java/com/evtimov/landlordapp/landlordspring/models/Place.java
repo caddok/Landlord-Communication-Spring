@@ -28,6 +28,10 @@ public class Place {
     @JoinColumn(name = "placeId")
     private Set<Report> reports;
 
+    @OneToMany
+    @JoinColumn(name = "placeId")
+    private Set<Rent> rents;
+
     public Place(){
         //default
     }
@@ -77,5 +81,13 @@ public class Place {
 
     public void setReports(Set<Report> reports) {
         this.reports = reports;
+    }
+
+    public Set<Rent> getRents() {
+        return rents;
+    }
+
+    public void setRents(Set<Rent> rents) {
+        this.rents = rents;
     }
 }

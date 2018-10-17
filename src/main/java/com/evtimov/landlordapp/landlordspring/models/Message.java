@@ -16,6 +16,12 @@ public class Message {
     @Column(name = "timestamp")
     private Date timestamp;
 
+    @Column(name = "senderId")
+    private int senderID;
+
+    @Column(name = "receiverId")
+    private int receiverID;
+
     @ManyToOne
     @JoinColumn(name = "chatsessionId")
     private Chatsession chatsession;
@@ -43,7 +49,9 @@ public class Message {
     }
 
     public Message(int messageID, Date timestamp, String text,
-                   String picture, String status){
+                   String picture, String status, int senderID, int receiverID){
+        setReceiverID(receiverID);
+        setSenderID(senderID);
         setMessageID(messageID);
         setTimestamp(timestamp);
         setText(text);
@@ -115,5 +123,21 @@ public class Message {
 
     public void setReceiver(User receiver) {
         this.receiver = receiver;
+    }
+
+    public int getSenderID() {
+        return senderID;
+    }
+
+    public void setSenderID(int senderID) {
+        this.senderID = senderID;
+    }
+
+    public int getReceiverID() {
+        return receiverID;
+    }
+
+    public void setReceiverID(int receiverID) {
+        this.receiverID = receiverID;
     }
 }

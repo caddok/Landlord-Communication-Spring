@@ -16,6 +16,12 @@ public class Report {
     @Column(name = "issue")
     private String issue;
 
+    @Column(name = "placeId")
+    private int placeID;
+
+    @Column(name = "userId")
+    private int userID;
+
     @Column(name = "description")
     private String description;
 
@@ -40,7 +46,9 @@ public class Report {
         //default
     }
 
-    public Report(int reportID, String issue, String description, String picture, Date date, boolean isResolved){
+    public Report(int reportID, String issue, String description, String picture, Date date, boolean isResolved, int placeID, int userID){
+        setPlaceID(placeID);
+        setUserID(userID);
         setReportID(reportID);
         setIssue(issue);
         setDescription(description);
@@ -111,5 +119,21 @@ public class Report {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public int getPlaceID() {
+        return placeID;
+    }
+
+    public void setPlaceID(int placeID) {
+        this.placeID = placeID;
+    }
+
+    public int getUserID() {
+        return userID;
+    }
+
+    public void setUserID(int userID) {
+        this.userID = userID;
     }
 }
