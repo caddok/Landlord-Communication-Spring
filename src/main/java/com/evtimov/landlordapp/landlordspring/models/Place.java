@@ -24,12 +24,10 @@ public class Place {
             inverseJoinColumns = @JoinColumn(name = "userId"))
     private Set<User> users;
 
-    @OneToMany
-    @JoinColumn(name = "placeId")
+    @OneToMany(mappedBy = "place")
     private Set<Report> reports;
 
-    @OneToMany
-    @JoinColumn(name = "placeId")
+    @OneToMany(mappedBy = "place")
     private Set<Rent> rents;
 
     public Place(){

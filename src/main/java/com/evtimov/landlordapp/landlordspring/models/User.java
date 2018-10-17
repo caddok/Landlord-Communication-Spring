@@ -61,24 +61,19 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "chatsessionId"))
     private Set<Chatsession> myChats;
 
-    @OneToMany
-    @JoinColumn(name = "userId")
+    @OneToMany(mappedBy = "user")
     private Set<Card> myCards;
 
-    @OneToMany
-    @JoinColumn(name = "userId")
+    @OneToMany(mappedBy = "user")
     private Set<Report> myReports;
 
-    @OneToMany
-    @JoinColumn(name = "userId")
+    @OneToMany(mappedBy = "user")
     private Set<Payment> myPayments;
 
-    @OneToMany
-    @JoinColumn(name = "senderId")
+    @OneToMany(mappedBy = "sender")
     private Set<Message> sentMessages;
 
-    @OneToMany
-    @JoinColumn(name = "receiverId")
+    @OneToMany(mappedBy = "receiver")
     private Set<Message> receivedMessages;
 
 

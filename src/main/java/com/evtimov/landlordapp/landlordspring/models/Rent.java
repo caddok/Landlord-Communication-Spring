@@ -33,8 +33,9 @@ public class Rent {
     @JoinColumn(name = "placeId")
     private Place place;
 
-    @OneToMany
-    @JoinColumn(name = "rentId")
+
+    //mapped by Rent rent field in Payment class
+    @OneToMany(mappedBy = "rent")
     private Set<Payment> payments;
 
     public Rent(){
