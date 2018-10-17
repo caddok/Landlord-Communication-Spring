@@ -10,37 +10,54 @@ public class Payment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "PaymentId")
+    @Column(name = "paymentId")
     private int paymentID;
 
-    @Column(name = "UserId")
+    @Column(name = "userId")
     private int userID;
 
-    @Column(name = "CardId")
+    @Column(name = "cardId")
     private int cardID;
 
-    @Column(name = "PlaceId")
+    @Column(name = "placeId")
     private int placeID;
 
-    @Column(name = "RentId")
+    @Column(name = "rentId")
     private int rentID;
 
-    @Column(name = "Amount")
+    @ManyToOne
+    @JoinColumn(name = "userId")
+    private User user;
+
+
+    @ManyToOne
+    @JoinColumn(name = "cardId")
+    private Card card;
+
+    @ManyToOne
+    @JoinColumn(name = "placeId")
+    private Place place;
+
+    @ManyToOne
+    @JoinColumn(name = "rentId")
+    private Rent rent;
+
+    @Column(name = "amount")
     private double amount;
 
-    @Column(name = "Date")
+    @Column(name = "date")
     private Date date;
 
     public Payment(){
         //default
     }
 
-    public Payment(int paymentID, int userID, int cardID, int placeID, int rentID, double amount, Date date){
-        setPaymentID(paymentID);
+    public Payment(int paymentID, double amount, Date date, int userID, int cardID, int placeID, int rentID){
+        setRentID(rentID);
+        setPlaceID(placeID);
         setUserID(userID);
         setCardID(cardID);
-        setPlaceID(placeID);
-        setRentID(rentID);
+        setPaymentID(paymentID);
         setAmount(amount);
         setDate(date);
     }
@@ -51,6 +68,54 @@ public class Payment {
 
     public void setPaymentID(int paymentID) {
         this.paymentID = paymentID;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Rent getRent() {
+        return rent;
+    }
+
+    public void setRent(Rent rent) {
+        this.rent = rent;
+    }
+
+    public Card getCard() {
+        return card;
+    }
+
+    public void setCard(Card card) {
+        this.card = card;
+    }
+
+    public Place getPlace() {
+        return place;
+    }
+
+    public void setPlace(Place place) {
+        this.place = place;
     }
 
     public int getUserID() {
@@ -83,21 +148,5 @@ public class Payment {
 
     public void setRentID(int rentID) {
         this.rentID = rentID;
-    }
-
-    public double getAmount() {
-        return amount;
-    }
-
-    public void setAmount(double amount) {
-        this.amount = amount;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
     }
 }

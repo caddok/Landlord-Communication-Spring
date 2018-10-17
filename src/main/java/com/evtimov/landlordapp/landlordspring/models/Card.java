@@ -9,37 +9,36 @@ public class Card {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "CardId")
+    @Column(name = "cardId")
     private int cardID;
 
-    @Column(name = "Brand")
+    @Column(name = "brand")
     private String brand;
 
-    @Column(name = "Type")
+    @Column(name = "type")
     private String type;
 
-    @Column(name = "Cardnumber")
+    @Column(name = "cardnumber")
     private String cardNumber;
 
-    @Column(name = "Cvvnumber")
+    @Column(name = "cvvnumber")
     private int cvvNumber;
 
-    @Column(name = "UserId")
-    private int userID;
-
-    @Column(name = "Balance")
+    @Column(name = "balance")
     private double balance;
 
+    @Column(name = "userId")
+    private int userID;
+
     @ManyToOne
-    @JoinColumn(name = "UserId")
+    @JoinColumn(name = "userId")
     private User user;
 
     public Card(){
         //default
     }
 
-    public Card(int cardID, String brand, String type, String cardNumber, int cvvNumber, int userID, double balance, User user){
-        setUser(user);
+    public Card(int cardID, String brand, String type, String cardNumber, int cvvNumber, double balance, int userID){
         setUserID(userID);
         setBrand(brand);
         setType(type);
@@ -89,14 +88,6 @@ public class Card {
         this.cvvNumber = cvvNumber;
     }
 
-    public int getUserID() {
-        return userID;
-    }
-
-    public void setUserID(int userID) {
-        this.userID = userID;
-    }
-
     public double getBalance() {
         return balance;
     }
@@ -111,5 +102,13 @@ public class Card {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public int getUserID() {
+        return userID;
+    }
+
+    public void setUserID(int userID) {
+        this.userID = userID;
     }
 }

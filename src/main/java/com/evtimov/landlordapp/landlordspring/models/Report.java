@@ -10,54 +10,51 @@ public class Report {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ReportId")
+    @Column(name = "reportId")
     private int reportID;
 
-    @Column(name = "PlaceId")
-    private int placeID;
-
-    @Column(name = "Issue")
+    @Column(name = "issue")
     private String issue;
 
-    @Column(name = "Description")
-    private String description;
+    @Column(name = "placeId")
+    private int placeID;
 
-    @Column(name = "Picture")
-    private String picture;
-
-    @Column(name = "Date")
-    private Date date;
-
-    @Column(name = "Isresolved")
-    private boolean isResolved;
-
-    @Column(name = "UserId")
+    @Column(name = "userId")
     private int userID;
 
+    @Column(name = "description")
+    private String description;
+
+    @Column(name = "picture")
+    private String picture;
+
+    @Column(name = "date")
+    private Date date;
+
+    @Column(name = "isresolved")
+    private boolean isResolved;
+
     @ManyToOne
-    @JoinColumn(name = "PlaceId")
+    @JoinColumn(name = "placeId")
     private Place place;
 
     @ManyToOne
-    @JoinColumn(name = "UserId")
+    @JoinColumn(name = "userId")
     private User user;
 
     public Report(){
         //default
     }
 
-    public Report(int reportID, int placeID, String issue, String description, String picture, Date date, boolean isResolved,
-                  int userID, Place place, User user){
-        setPlace(place);
-        setUser(user);
-        setReportID(reportID);
+    public Report(int reportID, String issue, String description, String picture, Date date, boolean isResolved, int placeID, int userID){
         setPlaceID(placeID);
+        setUserID(userID);
+        setReportID(reportID);
         setIssue(issue);
         setDescription(description);
         setPicture(picture);
         setDate(date);
         setIsResolved(isResolved);
-        setUserID(userID);
     }
 
     public int getReportID() {
@@ -66,14 +63,6 @@ public class Report {
 
     public void setReportID(int reportID) {
         this.reportID = reportID;
-    }
-
-    public int getPlaceID() {
-        return placeID;
-    }
-
-    public void setPlaceID(int placeID) {
-        this.placeID = placeID;
     }
 
     public String getIssue() {
@@ -109,19 +98,11 @@ public class Report {
     }
 
     public boolean getIsResolved() {
-        return isResolved;
+        return this.isResolved;
     }
 
     public void setIsResolved(boolean isResolved) {
-        isResolved = isResolved;
-    }
-
-    public int getUserID() {
-        return userID;
-    }
-
-    public void setUserID(int userID) {
-        this.userID = userID;
+        this.isResolved = isResolved;
     }
 
     public Place getPlace() {
@@ -138,5 +119,21 @@ public class Report {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public int getPlaceID() {
+        return placeID;
+    }
+
+    public void setPlaceID(int placeID) {
+        this.placeID = placeID;
+    }
+
+    public int getUserID() {
+        return userID;
+    }
+
+    public void setUserID(int userID) {
+        this.userID = userID;
     }
 }

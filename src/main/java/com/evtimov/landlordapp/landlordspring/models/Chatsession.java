@@ -10,24 +10,28 @@ public class Chatsession {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ChatsessionId")
+    @Column(name = "chatsessionId")
     private int chatsessionID;
 
-    @Column(name = "Createdate")
+    @Column(name = "createdate")
     private Date createDate;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "chatsessionsusers",
-            joinColumns = @JoinColumn(name = "ChatsessionId"),
-            inverseJoinColumns = @JoinColumn(name = "UserId"))
+            joinColumns = @JoinColumn(name = "chatsessionId"),
+            inverseJoinColumns = @JoinColumn(name = "userId"))
     private Set<User> users;
+
+    @OneToMany
+    @JoinColumn(name = "chatsessionId")
+    private Set<Message> messages;
+
 
     public Chatsession(){
         //default
     }
 
-    public Chatsession(int chatsessionID, Date createDate, Set<User> users){
-        setUsers(users);
+    public Chatsession(int chatsessionID, Date createDate){
         setChatsessionID(chatsessionID);
         setCreateDate(createDate);
     }
@@ -54,5 +58,13 @@ public class Chatsession {
 
     public void setUsers(Set<User> users) {
         this.users = users;
+    }
+
+    public Set<Message> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(Set<Message> messages) {
+        this.messages = messages;
     }
 }
