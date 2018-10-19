@@ -1,34 +1,38 @@
 buildscript {
-    ext {
-        springBootVersion = '2.0.5.RELEASE'
-    }
     repositories {
         mavenCentral()
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.5.RELEASE")
     }
 }
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
-apply plugin: 'war'
-war.archiveName 'spring-app.war'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
 
-group = 'com.evtimov.landlordapp'
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = 9
+bootJar {
+    baseName = 'gs-accessing-data-mysql'
+    version =  '0.1.0'
+}
 
 repositories {
     mavenCentral()
 }
 
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 dependencies {
-    compile 'org.springframework.boot:spring-boot-starter-web:2.0.1.RELEASE'
-    compile 'org.springframework.boot:spring-boot-starter-data-jpa:2.0.1.RELEASE'
-    compile 'mysql:mysql-connector-java:6.0.5'
-    compile 'org.apache.commons:commons-dbcp2:2.1.1'
-    compile 'javax.xml.bind:jaxb-api:2.3.0'
-    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat:2.0.1.RELEASE'
+    compile("org.springframework.boot:spring-boot-starter-web")
+
+    // JPA Data (We are going to use Repositories, Entities, Hibernate, etc...)
+    compile 'org.springframework.boot:spring-boot-starter-data-jpa'
+    compile 'org.hibernate:hibernate-core:5.3.7.Final'
+    // Use MySQL Connector-J
+    compile 'mysql:mysql-connector-java'
+
+    testCompile('org.springframework.boot:spring-boot-starter-test')
 }

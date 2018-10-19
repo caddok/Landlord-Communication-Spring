@@ -13,18 +13,18 @@ public class LandlordspringApplication {
         SpringApplication.run(LandlordspringApplication.class, args);
     }
 
-    @Bean
-    public SessionFactory sessionFactory(){
-        return new org.hibernate.cfg.Configuration()
-                .configure("hibernate.cfg.xml")
-                .addAnnotatedClass(User.class)
-                .addAnnotatedClass(Place.class)
-                .addAnnotatedClass(Card.class)
-                .addAnnotatedClass(Report.class)
-                .addAnnotatedClass(Payment.class)
-                .addAnnotatedClass(Rent.class)
-                .addAnnotatedClass(Chatsession.class)
-                .addAnnotatedClass(Message.class)
-                .buildSessionFactory();
-    }
+//    @Bean
+//    public SessionFactory sessionFactory(){
+//        return new org.hibernate.cfg.Configuration()
+//                .configure("hibernate.cfg.xml")
+//                .addAnnotatedClass(User.class)
+//                .addAnnotatedClass(Place.class)
+//                .addAnnotatedClass(Card.class)
+//                .addAnnotatedClass(Report.class)
+//                .addAnnotatedClass(Payment.class)
+//                .addAnnotatedClass(Rent.class)
+//                .addAnnotatedClass(Chatsession.class)
+//                .addAnnotatedClass(Message.class)
+//                .buildSessionFactory();
+//    }
 }

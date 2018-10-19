@@ -15,11 +15,11 @@ public class RentService {
     }
 
     public void addRent(Rent rent) {
-
+        repository.save(rent);
     }
 
-    public void updateRent(int id) {
-
+    public void updateRent(Rent rent) {
+        repository.save(rent);
     }
 
 }

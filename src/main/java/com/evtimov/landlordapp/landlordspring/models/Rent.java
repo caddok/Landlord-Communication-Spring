@@ -30,11 +30,11 @@ public class Rent {
     private Date dueDate;
 
     @ManyToOne
-    @JoinColumn(name = "placeId")
+    @JoinColumn(name = "placeId",insertable = false,updatable = false)
     private Place place;
 
     @OneToMany
-    @JoinColumn(name = "rentId")
+    @JoinColumn(name = "rentId",insertable = false,updatable = false)
     private Set<Payment> payments;
 
     public Rent(){

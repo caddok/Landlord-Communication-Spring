@@ -31,7 +31,7 @@ public class Card {
     private int userID;
 
     @ManyToOne
-    @JoinColumn(name = "userId")
+    @JoinColumn(name = "userId",insertable = false,updatable = false)
     private User user;
 
     public Card(){
