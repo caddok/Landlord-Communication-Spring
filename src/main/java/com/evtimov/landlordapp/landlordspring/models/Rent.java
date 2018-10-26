@@ -35,6 +35,9 @@ public class Rent {
 
     @OneToMany
     @JoinColumn(name = "rentId",insertable = false,updatable = false)
+
+    //mapped by Rent rent field in Payment class
+    @OneToMany(mappedBy = "rent")
     private Set<Payment> payments;
 
     public Rent(){

@@ -38,6 +38,8 @@ public class Payment {
     @JoinColumn(name = "placeId",insertable = false,updatable = false)
     private Place place;
 
+
+    // name = "name of the column in corresponding table"
     @ManyToOne
     @JoinColumn(name = "rentId",insertable = false,updatable = false)
     private Rent rent;
