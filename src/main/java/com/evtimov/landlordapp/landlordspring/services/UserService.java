@@ -60,4 +60,8 @@ public class UserService {
         repository.save(user);
         return user;
     }
+
+    public User findByRegToken(String token) {
+        return repository.findUserByRegistrationToken(token);
+    }
 }

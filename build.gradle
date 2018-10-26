@@ -25,6 +25,7 @@ repositories {
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
+
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
 
@@ -33,6 +34,11 @@ dependencies {
     compile 'org.hibernate:hibernate-core:5.3.7.Final'
     // Use MySQL Connector-J
     compile 'mysql:mysql-connector-java'
+    implementation 'com.google.firebase:firebase-admin:6.5.0'
+    
+    implementation 'com.squareup.okhttp3:okhttp:3.9.1'
+    implementation 'com.google.code.gson:gson:2.8.2'
+    implementation 'com.google.api-client:google-api-client:1.23.0'
 
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }

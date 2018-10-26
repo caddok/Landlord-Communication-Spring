@@ -6,6 +6,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ChatSessionRepo extends JpaRepository<Chatsession,Integer> {
-    //List<Chatsession> findChatsessionByUsersContainingUserId(User users_containingUserId);
-
 }
