@@ -16,6 +16,9 @@ public class User {
     @Column(name = "islandlord")
     private boolean isLandlord;
 
+    @Column(name = "registrationtoken")
+    private String registrationToken;
+
     @Column(name = "username")
     private String username;
 
@@ -82,7 +85,8 @@ public class User {
     }
 
     public User(int userID, boolean isLandlord, String username, String picture, String firstName, String lastName, String email,
-                boolean isOnline, String passwordHash, String passwordSalt, int votes, double voteSum){
+                boolean isOnline, String passwordHash, String passwordSalt, int votes, double voteSum, String registrationToken){
+        setRegistrationToken(registrationToken);
         setUserID(userID);
         setIsLandlord(isLandlord);
         setUsername(username);
@@ -255,5 +259,13 @@ public class User {
 
     public void setReceivedMessages(Set<Message> receivedMessages) {
         this.receivedMessages = receivedMessages;
+    }
+
+    public String getRegistrationToken() {
+        return registrationToken;
+    }
+
+    public void setRegistrationToken(String registrationToken) {
+        this.registrationToken = registrationToken;
     }
 }

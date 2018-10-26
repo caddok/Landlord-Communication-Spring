@@ -36,20 +36,20 @@ public class Message {
     private String status;
 
     @ManyToOne
-    @JoinColumn(name = "senderId")
+    @JoinColumn(name = "senderId",insertable = false,updatable = false)
     private User sender;
 
     @ManyToOne
-    @JoinColumn(name = "receiverId")
+    @JoinColumn(name = "receiverId", insertable = false, updatable = false)
     private User receiver;
 
 
-    public Message(){
+    public Message() {
         //default
     }
 
     public Message(int messageID, Date timestamp, String text,
-                   String picture, String status, int senderID, int receiverID){
+                   String picture, String status, int senderID, int receiverID) {
         setReceiverID(receiverID);
         setSenderID(senderID);
         setMessageID(messageID);
@@ -66,7 +66,6 @@ public class Message {
     public void setMessageID(int messageID) {
         this.messageID = messageID;
     }
-
 
 
     public Date getTimestamp() {

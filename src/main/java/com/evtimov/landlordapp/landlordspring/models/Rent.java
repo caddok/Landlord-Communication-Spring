@@ -30,9 +30,11 @@ public class Rent {
     private Date dueDate;
 
     @ManyToOne
-    @JoinColumn(name = "placeId")
+    @JoinColumn(name = "placeId",insertable = false,updatable = false)
     private Place place;
 
+    @OneToMany
+    @JoinColumn(name = "rentId",insertable = false,updatable = false)
 
     //mapped by Rent rent field in Payment class
     @OneToMany(mappedBy = "rent")

@@ -35,11 +35,11 @@ public class Report {
     private boolean isResolved;
 
     @ManyToOne
-    @JoinColumn(name = "placeId")
+    @JoinColumn(name = "placeId",insertable = false, updatable = false)
     private Place place;
 
     @ManyToOne
-    @JoinColumn(name = "userId")
+    @JoinColumn(name = "userId",insertable = false, updatable = false)
     private User user;
 
     public Report(){
@@ -128,7 +128,6 @@ public class Report {
     public void setPlaceID(int placeID) {
         this.placeID = placeID;
     }
-
     public int getUserID() {
         return userID;
     }

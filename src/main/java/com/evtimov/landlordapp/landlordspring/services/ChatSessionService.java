@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+import static java.util.stream.Collectors.toList;
+
 @Service
 public class ChatSessionService {
     private final ChatSessionRepo repository;
@@ -17,15 +19,19 @@ public class ChatSessionService {
     }
 
     public List<Chatsession> getAllByUserId(int id) {
-        return null;
+        List<Chatsession> allSessions = repository.findAll();
+
+        return allSessions.stream()
+                .filter(s->s.getUsers().contains(id))
+                .collect(toList());
     }
 
     public void createSession(Chatsession session){
-
+        repository.save(session);
     }
 
-    public void deleteUselessSession(int id) {
-
+    public void deleteUselessSession(Chatsession session) {
+        repository.delete(session);
     }
 
 }

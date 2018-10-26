@@ -26,22 +26,22 @@ public class Payment {
     private int rentID;
 
     @ManyToOne
-    @JoinColumn(name = "userId")
+    @JoinColumn(name = "userId",insertable = false,updatable = false)
     private User user;
 
 
     @ManyToOne
-    @JoinColumn(name = "cardId")
+    @JoinColumn(name = "cardId",insertable = false,updatable = false)
     private Card card;
 
     @ManyToOne
-    @JoinColumn(name = "placeId")
+    @JoinColumn(name = "placeId",insertable = false,updatable = false)
     private Place place;
 
 
     // name = "name of the column in corresponding table"
     @ManyToOne
-    @JoinColumn(name = "rentId")
+    @JoinColumn(name = "rentId",insertable = false,updatable = false)
     private Rent rent;
 
     @Column(name = "amount")
